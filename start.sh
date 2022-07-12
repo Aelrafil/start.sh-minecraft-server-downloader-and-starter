@@ -127,6 +127,6 @@ then
     java -jar buildtools.jar --rev "$ver"
     rm -r apache-maven-3.6.0/ BuildData/ buildtools.jar BuildTools.log.txt Bukkit CraftBukkit/ craftbukkit-1.8.8.jar Spigot/ work
     clear
-    echo "Rieseguire il file per avviare il server! Se no sei frocio!"
+    echo "Rieseguire il file per avviare il server!"
   fi
 fi
