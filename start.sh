@@ -4,6 +4,8 @@ BRANCH="master"
 
 git remote update
 
+git stash
+
 #Were are we locally
 LAST_UPDATE=`git show --no-notes --format=format:"%H" $BRANCH | head -n 1`
 
