@@ -2,7 +2,7 @@
 
 serverjar=server.jar
 
-if [ -f server.jar ]
+if [ -f server.jar ] || [ -f BungeeCord.jar ]
 then
   start=n
 
@@ -49,7 +49,7 @@ elif [ ! -f server.jar ]
 then
   software=
   echo "Quale software Vuoi usare?"
-  echo "Paper(1.8.8-1.19) Spigot(1.8.8-1.19)"
+  echo "Paper(1.8.8-1.19), Spigot(1.8.8-1.19), Proxy"
   read software
   if [ $software = paper ] || [ $software = Paper ] || [ $software -z ]
   then
@@ -128,5 +128,25 @@ then
     rm -r apache-maven-3.6.0/ BuildData/ buildtools.jar BuildTools.log.txt Bukkit CraftBukkit/ craftbukkit-1.8.8.jar Spigot/ work
     clear
     echo "Rieseguire il file per avviare il server!"
-  fi
+  elif [ $software = proxy ] || [ $software = Proxy ]
+  then
+	echo "Quale versione vuoi utilizzare)"
+	echo "BungeeCord, Waterfall, Travertine, Velocity"
+	read ver
+	if [ $ver = bungeecord ] || [ $ver = Bungeecord ] || [ $ver = BungeeCord ] || [ $ver -z ]
+	then
+	  wget https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
+	elif [ $ver = waterfall ] || [ $ver = Waterfall ] || [ $ver = WaterFall ]
+	then
+	  wget https://api.papermc.io/v2/projects/waterfall/versions/1.19/builds/498/downloads/waterfall-1.19-498.jar
+	  mv waterfall-1.19-498 BungeeCord.jar
+	elif [ $ver = velocity ] || [ $ver = Velocity ]
+	then
+	  wget https://api.papermc.io/v2/projects/velocity/versions/3.1.2-SNAPSHOT/builds/161/downloads/velocity-3.1.2-SNAPSHOT-161.jar
+	  mv velocity-3.1.2-SNAPSHOT-161.jar BungeeCord.jar
+	elif [ $ver = travertine ] || [ $ver = Travertine ]
+	then
+	  wget https://api.papermc.io/v2/projects/travertine/versions/1.16/builds/191/downloads/travertine-1.16-191.jar
+	  mv travertine-1.16-191.jar BungeeCord.jar
+	fi
 fi
