@@ -26,6 +26,8 @@ fi
 
 serverjar=server.jar
 
+echo "script by アノス・ヴォルディゴード#2385"
+
 if [ -f server.jar ] || [ -f BungeeCord.jar ]
 then
   start=n
