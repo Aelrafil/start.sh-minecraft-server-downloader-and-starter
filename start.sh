@@ -149,7 +149,7 @@ then
     echo "1.8.8-1.19"
     read ver
     java -jar buildtools.jar --rev "$ver"
-    rm -r apache-maven-3.6.0/ BuildData/ buildtools.jar BuildTools.log.txt Bukkit CraftBukkit/ craftbukkit-1.8.8.jar Spigot/ work
+    rm -r apache-maven-3.6.0/ BuildData/ buildtools.jar BuildTools.log.txt Bukkit CraftBukkit/ craftbukkit-"$ver".jar Spigot/ work
     clear
     echo "Rieseguire il file per avviare il server!"
   elif [ $software = proxy ] || [ $software = Proxy ]
