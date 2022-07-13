@@ -1,5 +1,23 @@
 #!/bin/bash
 
+BRANCH="master"
+
+git remote update
+
+#Were are we locally
+LAST_UPDATE=`git show --no-notes --format=format:"%H" $BRANCH | head -n 1`
+
+#Were are we remote
+LAST_COMMIT=`git show --no-notes --format=format:"%H" origin/$BRANCH | head -n 1`
+
+#IF we don't match we should update local
+if [ $LAST_COMMIT != $LAST_UPDATE ]; then
+        echo "Updating your branch $BRANCH"
+        git pull --no-edit
+else
+        echo "No updates available"
+fi
+
 serverjar=server.jar
 
 if [ -f server.jar ] || [ -f BungeeCord.jar ]
@@ -130,23 +148,24 @@ then
     echo "Rieseguire il file per avviare il server!"
   elif [ $software = proxy ] || [ $software = Proxy ]
   then
-	echo "Quale versione vuoi utilizzare)"
-	echo "BungeeCord, Waterfall, Travertine, Velocity"
-	read ver
-	if [ $ver = bungeecord ] || [ $ver = Bungeecord ] || [ $ver = BungeeCord ] || [ $ver -z ]
-	then
-	  wget https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
-	elif [ $ver = waterfall ] || [ $ver = Waterfall ] || [ $ver = WaterFall ]
-	then
-	  wget https://api.papermc.io/v2/projects/waterfall/versions/1.19/builds/498/downloads/waterfall-1.19-498.jar
-	  mv waterfall-1.19-498 BungeeCord.jar
-	elif [ $ver = velocity ] || [ $ver = Velocity ]
-	then
-	  wget https://api.papermc.io/v2/projects/velocity/versions/3.1.2-SNAPSHOT/builds/161/downloads/velocity-3.1.2-SNAPSHOT-161.jar
-	  mv velocity-3.1.2-SNAPSHOT-161.jar BungeeCord.jar
-	elif [ $ver = travertine ] || [ $ver = Travertine ]
-	then
-	  wget https://api.papermc.io/v2/projects/travertine/versions/1.16/builds/191/downloads/travertine-1.16-191.jar
-	  mv travertine-1.16-191.jar BungeeCord.jar
-	fi
+    echo "Quale versione vuoi utilizzare)"
+    echo "BungeeCord, Waterfall, Travertine, Velocity"
+    read ver
+    if [ $ver = bungeecord ] || [ $ver = Bungeecord ] || [ $ver = BungeeCord ] || [ $ver -z ]
+    then
+      wget https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
+    elif [ $ver = waterfall ] || [ $ver = Waterfall ] || [ $ver = WaterFall ]
+    then
+      wget https://api.papermc.io/v2/projects/waterfall/versions/1.19/builds/498/downloads/waterfall-1.19-498.jar
+      mv waterfall-1.19-498 BungeeCord.jar
+    elif [ $ver = velocity ] || [ $ver = Velocity ]
+    then
+      wget https://api.papermc.io/v2/projects/velocity/versions/3.1.2-SNAPSHOT/builds/161/downloads/velocity-3.1.2-SNAPSHOT-161.jar
+      mv velocity-3.1.2-SNAPSHOT-161.jar BungeeCord.jar
+    elif [ $ver = travertine ] || [ $ver = Travertine ]
+    then
+      wget https://api.papermc.io/v2/projects/travertine/versions/1.16/builds/191/downloads/travertine-1.16-191.jar
+      mv travertine-1.16-191.jar BungeeCord.jar
+    fi
+  fi
 fi
