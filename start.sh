@@ -14,10 +14,14 @@ LAST_COMMIT=`git show --no-notes --format=format:"%H" origin/$BRANCH | head -n 1
 
 #IF we don't match we should update local
 if [ $LAST_COMMIT != $LAST_UPDATE ]; then
-        echo "Updating your branch $BRANCH"
-        git pull --no-edit
+        echo "vuoi aggiornare lo script? (Y/n)"
+        read upd
+        if [ $upd = y ] || [ $upd = Y ] || [ $upd -z ]; then
+                echo "Updating your branch $BRANCH"
+                git pull --no-edit
+        fi
 else
-        echo "No updates available"
+        echo "nessun aggiornamento"
 fi
 
 serverjar=server.jar
