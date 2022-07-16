@@ -175,5 +175,26 @@ then
       wget https://api.papermc.io/v2/projects/travertine/versions/1.16/builds/191/downloads/travertine-1.16-191.jar
       mv travertine-1.16-191.jar BungeeCord.jar
     fi
-  fi
+  elif [ $software = purpur ] || [ $software = Purpur ]
+  then
+    echo "Quale versione vuoi usare?"
+    echo "1.16.5, 1.17.1, 1.18.2, 1.19"
+    read ver
+    if [ $ver = 1.19 ] || [ $ver -z ]
+    then
+      wget https://api.purpurmc.org/v2/purpur/1.19/1714/download
+      mv purpur-1.19-1714.jar server.jar
+    elif [ $ver = 1.18.2 ]
+    then
+      wget https://api.purpurmc.org/v2/purpur/1.18.2/1632/download
+      mv purpur-1.18.2-1632.jar server.jar
+    elif [ $ver = 1.17.1 ]
+    then
+      wget https://api.purpurmc.org/v2/purpur/1.17.1/1428/download
+      mv purpur-1.17.1-1428.jar server.jar
+    elif [ $ver = 1.16.5 ]
+    then
+      wget https://api.purpurmc.org/v2/purpur/1.16.5/1171/download
+      mv purpur-1.16.5-1171.jar server.jar
+    fi
 fi
