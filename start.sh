@@ -75,7 +75,7 @@ elif [ ! -f server.jar ]
 then
   software=
   echo "Quale software Vuoi usare?"
-  echo "Paper(1.8.8-1.19), Spigot(1.8.8-1.19), Proxy"
+  echo "Paper(1.8.8-1.19), Spigot(1.8.8-1.19), Purpur(1.16.5-1.19), Proxy"
   read software
   if [ $software = paper ] || [ $software = Paper ] || [ $software -z ]
   then
