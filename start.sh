@@ -197,4 +197,5 @@ then
       wget https://api.purpurmc.org/v2/purpur/1.16.5/1171/download
       mv purpur-1.16.5-1171.jar server.jar
     fi
+  fi
 fi
